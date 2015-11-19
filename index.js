@@ -71,7 +71,7 @@ function init() {
       '#653700',
       '#e50000'];
 
-  for ( var i = 0; i < 100; i ++ ) {
+  for ( var i = 0; i < 16; i ++ ) {
     var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: colors[Math.floor(Math.random() * colors.length)] } ) );
 
     object.position.x = Math.random() * 1000 - 500;
