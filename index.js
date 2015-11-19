@@ -7,30 +7,42 @@ var mouse = new THREE.Vector2(),
     offset = new THREE.Vector3(),
     INTERSECTED, SELECTED;
 
-init();
+init(16);
 animate();
 
+flagvariable2 = false;
+function reset(size) {
+    objects = [];
+    container.remove();
+    counter = 0;
+    init(size);
+    animate();
+    flagvariable2 = true;
+}
+
+function restart(size) {
+    if (flagVariable && flagvariable2) {
+        window.location = "http://ericpemberton.com/birthday";
+        return true;
+    }
+    flagVariable = true;
+    reset(size);
+    flagvariable2 = false;
+    alert('level 2');
+    document.querySelector('.message p ').innerHTML = "Okay, sorry, that was a bug that became a feature. So you're all good to go now";
+    document.querySelector('.message').style.display = "none";
+    return false;
+}
+
 var flagVariable = false;
+var done = false;
 window.onload = function() {
     document.querySelector('button').addEventListener('click', function() {
-        if (flagVariable) {
-            window.location = "http://ericpemberton.com/birthday";
-            return true;
-        }
-        objects = [];
-        container.remove();
-        counter = 0;
-        alert('level 2');
-        init();
-        animate();
-        flagVariable = true;
-        document.querySelector('.message p ').innerHTML = "Okay, sorry, that was a bug that became a feature. So you're all good to go now";
-        document.querySelector('.message').style.display = "none";
-        return false;
+        restart(1000);
     });
 }
 
-function init() {
+function init(size) {
   container = document.createElement( 'div' );
   document.body.appendChild( container );
 
@@ -71,7 +83,7 @@ function init() {
       '#653700',
       '#e50000'];
 
-  for ( var i = 0; i < 16; i ++ ) {
+  for ( var i = 0; i < size; i ++ ) {
     var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: colors[Math.floor(Math.random() * colors.length)] } ) );
 
     object.position.x = Math.random() * 1000 - 500;
@@ -209,7 +221,9 @@ function onDocumentMouseUp( event ) {
       SELECTED.position.copy( intersects[ 0 ].point.sub( 0 ) );
     SELECTED = null;
     counter++;
-
+    if (flagVariable && !flagvariable2) {
+        reset(16);
+    }
   }
 
   if ( objects.length === counter ) {
