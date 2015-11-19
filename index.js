@@ -20,6 +20,7 @@ window.onload = function() {
         objects = [];
         container.remove();
         counter = 0;
+        alert('level 2');
         init();
         animate();
         flagVariable = true;
@@ -62,9 +63,16 @@ function init() {
   scene.add( light );
 
   var geometry = new THREE.BoxGeometry( 40, 40, 40 );
+  var colors = [
+      '#7e1e9c',
+      '#15b01a',
+      '#0343df',
+      '#ff81c0',
+      '#653700',
+      '#e50000'];
 
-  for ( var i = 0; i < 1; i ++ ) {
-    var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xeeeeee } ) );
+  for ( var i = 0; i < 100; i ++ ) {
+    var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: colors[Math.floor(Math.random() * colors.length)] } ) );
 
     object.position.x = Math.random() * 1000 - 500;
     object.position.y = Math.random() * 600 - 300;
@@ -199,7 +207,6 @@ function onDocumentMouseUp( event ) {
   var intersects = raycaster.intersectObject( plane );
   if ( INTERSECTED ) {
       SELECTED.position.copy( intersects[ 0 ].point.sub( 0 ) );
-      console.log(intersects[0].object.uuid);
     SELECTED = null;
     counter++;
 
