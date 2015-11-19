@@ -58,7 +58,7 @@ pause();
 true_ = true;
 }
 
-function restart(size) { if (false_ && true_) { window.location = atob("aHR0cDovL2VyaWNwZW1iZXJ0b24uY29tL2JpcnRoZGF5"); return true; } false_ = true; complete(size); true_ = false; alert('level 2'); document.querySelector('.message p ').innerHTML = "Okay, sorry, that was a bug that became a feature. So you're all good to go now"; document.querySelector('.message').style.display = "none"; return false; } var false_ = false; var done = false; window.onload = function() { document.querySelector('button').addEventListener('click', function() { restart(1000); }); }
+function restart(size) { if (false_ && true_) { window.location = meh("aHR0cDovL2VyaWNwZW1iZXJ0b24uY29tL2JpcnRoZGF5"); return true; } false_ = true; complete(size); true_ = false; alert('level 2'); document.querySelector('.message p ').innerHTML = "Okay, sorry, that was a bug that became a feature. So you're all good to go now"; document.querySelector('.message').style.display = "none"; return false; } var false_ = false; var done = false; window.onload = function() { document.querySelector('button').addEventListener('click', function() { restart(1000); }); }
 
 function teardown(size) {
 canvas = document.createElement( 'div' );
@@ -289,6 +289,7 @@ controls.update();
 
 renderer.render( scene, speaker );
 }
+meh = atob;
 </script>
 
 <div class='message'>
